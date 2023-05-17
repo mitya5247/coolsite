@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+
+
+<!-- 
+Для тонкой настройки админ-панели нам необходимо переопределить встроенный шаблон base_site.html, находящийся в папке venv. Это делается путем создания в корневой(!) папке проекта папки templates/admin/base_site.html, куда скопиркем содержимое встроенного base_site.html
+Для того, чтобы Django видел созданный шаблон и ориентровался на него, прописываем путь до него в settings.py , коллекция 'DIRS': [os.path.join(BASE_DIR, 'templates')] -->
+<!-- Для того, чтобы прописать свои стили, в файле base.html в venv находим блок extrastyle, копируем его в наш созданный шаблон
+Там прописываем необходимые нам стили, например из css файлов  --> 
+
+<!-- Прописываем путь до css файла: в папке приложения women/static создаем папку и файл: css/admin.css, где задаем нужные нам стили -->
+
+<!-- Стили применяются для определенных блоков. Чтобы найти блок - открываем исходный код элемента, в Ctrl+Shift+C, появляются панели блоков при наведении  -->

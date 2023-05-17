@@ -1,0 +1,11 @@
+{% for c in cats %}
+    {% if c.pk == cat_selected %}
+    <li class="selected">{{c.name}}</li>
+{% else %}
+    <li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
+{% endif %}
+{% endfor %}
+
+
+{# <li><a href="{% url 'category' c.slug %}">{{c.name}}</a></li> #} 
+{# предыдущий вариант, почему не отображались категории, поменяли c.pk на c.slug #}
